@@ -3,16 +3,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define WIDTH 10
+#define WIDTH 12
 #define HIGHT 20
 
 int gameover, score;
+int screen[WIDTH][HIGHT];
 
 
 void setup() {
     gameover = 0;
     score = 0;
-
 }
 
 void draw() {
@@ -20,10 +20,14 @@ void draw() {
         for (int j = 0; j < WIDTH; j++) {
             if (i == HIGHT-1) {
                 printf("_");
-            } else if (j == 0 || j == 9) {
+            } else if (j == 0 || j == 11) {
                 printf("|");
             } else {
-                printf(" ");
+                if (screen[i][j] == 0) {
+                    printf("o");
+                } else {
+                    printf(" ");
+                }
             }           
         }
         printf("\n");
@@ -32,6 +36,7 @@ void draw() {
 }
 
 int main() {
+    setup();
     draw();
     return 0;
 }
