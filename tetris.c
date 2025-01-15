@@ -17,6 +17,18 @@ void setup() {
     score = 0;
     piece_x = -1;
     piece_y = -1;
+    for (int i = 0; i < HIGHT; i++) {
+        for (int j = 0; j < WIDTH; j++) {
+            if (i == HIGHT-1) {
+                screen[i][j] = 2;
+            } else if (j == 0 || j == 11) {
+                printf("|");
+                screen[i][j] = 3;
+            }
+        }
+        
+    }
+    
 }
 
 void draw() {
@@ -47,11 +59,16 @@ void logic() {
         return;
     }
 
-    if (piece_y < HIGHT-1) {
-        screen[piece_y][piece_x] = 0;
-        piece_y++;
-        screen[piece_y][piece_x] = 1;
-    } 
+    if (screen[piece_y+1][piece_x] == 2) {
+        piece_x = -1;
+        return;
+    }
+
+    
+    screen[piece_y][piece_x] = 0;
+    piece_y++;
+    screen[piece_y][piece_x] = 1;
+    
 }
 
 int main() {
