@@ -59,7 +59,7 @@ void logic() {
         return;
     }
 
-    if (screen[piece_y+1][piece_x] == 2) {
+    if (screen[piece_y+1][piece_x] != 0) {
         piece_x = -1;
         return;
     }
